@@ -18,10 +18,11 @@ const App = () => {
       </div>
     );
   }
-  
+
+  // case where users have successfully connected their wallets
   return (
     <div className="landing">
-      <h1>Welcome to My DAO</h1>
+      <h1>👀 wallet connected, now what!</h1>
     </div>
   );
 };
