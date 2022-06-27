@@ -10,12 +10,12 @@ const App = () => {
   // let them call connectWallet 
   if (!address) {
     return (
-      <div className='landing'>
-        <h1>Welcome to MiddleEarthDAO</h1>
+      <div className='landing'> 
+        <h1>Welcome to MiddleEarthDAO 🧙‍♂️</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           Connect your Wallet
         </button>
-      </div>
+      </div> 
     );
   }
 
