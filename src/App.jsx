@@ -1,4 +1,5 @@
 import { useAddress, useMetamask } from '@thirdweb-dev/react'; 
+import './styles.css';
 
 const App = () => {
   // Using the hooks from thirdweb 
@@ -11,7 +12,7 @@ const App = () => {
   if (!address) {
     return (
       <div className='landing'> 
-        <h1>Welcome to MiddleEarthDAO 🧙‍♂️</h1>
+        <h1 className='welcomeHeader'>Welcome to MiddleEarthDAO 🧙‍♂️</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           Connect your Wallet
         </button>
