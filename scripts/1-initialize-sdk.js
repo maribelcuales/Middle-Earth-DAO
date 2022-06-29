@@ -24,6 +24,7 @@ const provider = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_API_UR
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 const sdk = new ThirdwebSDK(wallet);
 
+// to make sure sdk is initialized correctly 
 (async () => {
   try {
     const address = await sdk.getSigner().getAddress();
