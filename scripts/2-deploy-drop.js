@@ -10,7 +10,7 @@ import { readFileSync } from 'fs';
       // description for the collection 
       description: "A DAO for all folks of Middle Earth.",
       // the image that will be held as the NFT 
-      image: readFileSync("scripts/assets/mapMiddleEarth.png"),
+      image: readFileSync("scripts/assets/middleEarthDAO.png"),
       // pass in here the address of the person who will be receiving the proceeds from sale of nfts 
       // But we won' charge people for the drop, so pass in the 0x0 address 
       // you can set this to own wallet address if we want to charge for the drop 
