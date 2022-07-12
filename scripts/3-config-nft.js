@@ -9,7 +9,7 @@ const editionDrop = sdk.getEditionDrop("INSERT_EDITION_DROP_ADDRESS");
       {
         name: "Middle Earth Map",
         description: "This NFT will give you access to MiddleEarthDAO!",
-        image: readFileSync("scripts/assets/silmarillon.png"),
+        image: readFileSync("scripts/assets/silmaril.png"),
       },
     ]);
     console.log("✅ Successfully created a new NFT in the drop!");
