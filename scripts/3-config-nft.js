@@ -7,9 +7,9 @@ const editionDrop = sdk.getEditionDrop("INSERT_EDITION_DROP_ADDRESS");
   try {
     await editionDrop.createBatch([
       {
-        name: "Middle Earth Map",
+        name: "The Silmarils",
         description: "This NFT will give you access to MiddleEarthDAO!",
-        image: readFileSync("scripts/assets/silmaril.png"),
+        image: readFileSync("scripts/assets/nftSilmaril.png"),
       },
     ]);
     console.log("✅ Successfully created a new NFT in the drop!");
