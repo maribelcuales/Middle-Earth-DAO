@@ -1,7 +1,7 @@
 import sdk from './1-initialize-sdk';
 import { readFileSync } from 'fs'; 
 
-const editionDrop = sdk.getEditionDrop("INSERT_EDITION_DROP_ADDRESS");
+const editionDrop = sdk.getEditionDrop(process.env.EDITION_DROP_ADDRESS);
 
 (async () => {
   try {
