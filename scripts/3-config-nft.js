@@ -1,4 +1,4 @@
-import sdk from './1-initialize-sdk';
+import sdk from './1-initialize-sdk.js';
 import { readFileSync } from 'fs'; 
 
 const editionDrop = sdk.getEditionDrop(process.env.EDITION_DROP_ADDRESS);
