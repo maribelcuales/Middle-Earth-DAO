@@ -8,6 +8,9 @@ const App = () => {
   const connectWithMetamask = useMetamask();
   console.log("👋 Address:", address);
 
+  // Initialize editionDrop contract 
+  const editionDrop = useEditionDrop(process.env.EDITION_DROP_ADDRESS);
+
   // case if user has not connected their wallet
   // let them call connectWallet
   if (!address) {
