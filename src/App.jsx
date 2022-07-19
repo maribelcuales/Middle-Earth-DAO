@@ -1,22 +1,23 @@
-import { useAddress, useMetamask } from '@thirdweb-dev/react'; 
-import './styles.css';
+import { useAddress, useMetamask, useEditionDrop } from "@thirdweb-dev/react";
+import { useState, useEffect } from "react";
+import "./styles.css";
 
 const App = () => {
-  // Using the hooks from thirdweb 
-  const address = useAddress(); 
-  const connectWithMetamask = useMetamask(); 
+  // Using the hooks from thirdweb
+  const address = useAddress();
+  const connectWithMetamask = useMetamask();
   console.log("👋 Address:", address);
 
-  // case if user has not connected their wallet 
-  // let them call connectWallet 
+  // case if user has not connected their wallet
+  // let them call connectWallet
   if (!address) {
     return (
-      <div className='landing'> 
-        <h1 className='welcomeHeader'>Welcome to MiddleEarthDAO 🧙‍♂️</h1>
+      <div className="landing">
+        <h1 className="welcomeHeader">Welcome to MiddleEarthDAO 🧙‍♂️</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           Connect your Wallet
         </button>
-      </div> 
+      </div>
     );
   }
 
