@@ -10,7 +10,9 @@ const App = () => {
 
   // Initialize editionDrop contract 
   const editionDrop = useEditionDrop(process.env.EDITION_DROP_ADDRESS);
-
+  // State variable for us to know if user has our NFT 
+  const [hasClaimNFT, setHasClaimNFT] = useState(false);
+  
   // case if user has not connected their wallet
   // let them call connectWallet
   if (!address) {
