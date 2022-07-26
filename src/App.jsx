@@ -66,10 +66,16 @@ const App = () => {
     );
   }
 
-  // case where users have successfully connected their wallets
+  // Render mint NFT screen 
   return (
-    <div className="landing">
-      <h1>👀 wallet connected, now what!</h1>
+    <div className="mint-nft">
+      <h1>Mint your Free 💎DAO Membership NFT</h1>
+      <button
+        disabled={isClaiming}
+        onClick={mintNft}
+      >
+        {isClaiming ? "Minting..." : "Ming your NFT (FREE)"}
+      </button>
     </div>
   );
 };
