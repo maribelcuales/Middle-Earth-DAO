@@ -9,7 +9,7 @@ const App = () => {
   console.log("👋 Address:", address);
 
   // Initialize editionDrop contract 
-  const editionDrop = useEditionDrop(process.env.EDITION_DROP_ADDRESS);
+  const editionDrop = useEditionDrop("0x72f0948daFC590f31f9c3F729EaaFA0147EB799e");
   // State variable for us to know if user has our NFT 
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
   // isClaiming: loading state while the NFT is minting 
