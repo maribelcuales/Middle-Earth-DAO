@@ -12,6 +12,8 @@ const App = () => {
   const editionDrop = useEditionDrop(process.env.EDITION_DROP_ADDRESS);
   // State variable for us to know if user has our NFT 
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
+  // isClaiming: loading state while the NFT is minting 
+  const [isClaiming, setIsClaiming] = useState(false); 
 
   useEffect(() => {
     // Exit if they don't have a connected wallet 
