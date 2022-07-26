@@ -28,7 +28,7 @@ const App = () => {
           setHasClaimedNFT(true); 
           console.log("🌟 This user has a membership NFT!");       
         } else {
-          setHasClaimedNFT(false);
+          setHasClaimedNFT(false)
           console.log("😭 This user doesn't have a membership NFT.");
         }
       } catch (error) {
@@ -38,9 +38,23 @@ const App = () => {
     };
     checkBalance();
   }, [address, editionDrop]);
+
+  const mintNft = async () => {
+    try {
+      setIsClaiming(true); 
+      await editionDrop.claim("0", 1); 
+      console.log(`🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`);
+      setHasClaimedNFT(true);  
+    } catch(error) {
+      setHasClaimedNFT(false); 
+      console.error("Failed to mint NFT", error);   
+    } finally {
+      setIsClaiming(false); 
+    }
+  }; 
   
-  // case if user has not connected their wallet
-  // let them call connectWallet
+  // Case if user has not connected their wallet
+  // Let them call connectWallet
   if (!address) {
     return (
       <div className="landing">
