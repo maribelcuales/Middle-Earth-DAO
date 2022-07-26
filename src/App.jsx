@@ -11,7 +11,31 @@ const App = () => {
   // Initialize editionDrop contract 
   const editionDrop = useEditionDrop(process.env.EDITION_DROP_ADDRESS);
   // State variable for us to know if user has our NFT 
-  const [hasClaimNFT, setHasClaimNFT] = useState(false);
+  const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
+
+  useEffect(() => {
+    // Exit if they don't have a connected wallet 
+    if (!address) {
+      return; 
+    }
+
+    const checkBalance = async () => {
+      try {
+        const balance = await editionDrop.balanceOf(address, 0);
+        if (balance.gt(0)) {
+          setHasClaimedNFT(true); 
+          console.log("🌟 This user has a membership NFT!");       
+        } else {
+          setHasClaimedNFT(false);
+          console.log("😭 This user doesn't have a membership NFT.");
+        }
+      } catch (error) {
+        setHasClaimedNFT(false);
+        console.error("Failed to get balace", error);
+      }
+    };
+    checkBalance();
+  }, [address, editionDrop]);
   
   // case if user has not connected their wallet
   // let them call connectWallet
