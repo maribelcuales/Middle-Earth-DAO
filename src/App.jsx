@@ -44,11 +44,13 @@ const App = () => {
       setIsClaiming(true); 
       await editionDrop.claim("0", 1); 
       console.log(`🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`);
+      // user has successfully claimed an NFT 
       setHasClaimedNFT(true);  
     } catch(error) {
       setHasClaimedNFT(false); 
       console.error("Failed to mint NFT", error);   
     } finally {
+      // set to false to stop the loading state 
       setIsClaiming(false); 
     }
   }; 
@@ -74,7 +76,7 @@ const App = () => {
         disabled={isClaiming}
         onClick={mintNft}
       >
-        {isClaiming ? "Minting..." : "Ming your NFT (FREE)"}
+        {isClaiming ? "Minting..." : "Mint your NFT (FREE)"}
       </button>
     </div>
   );
