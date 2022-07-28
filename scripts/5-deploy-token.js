@@ -4,6 +4,7 @@ import sdk from './1-initialize-sdk';
 (async () => {
   try {
     // Deploy a standard ERC-20 contract 
+    // ERC-20: the standard all the massive coins on Ethereum adopt 
     const tokenAddress = await sdk.deployer.deployToken({
       // Token Name
       name: "MiddleEarthDAO Governance Token",
