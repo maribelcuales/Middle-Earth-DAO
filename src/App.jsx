@@ -15,11 +15,17 @@ const App = () => {
   // State variable for us to know if user has our NFT 
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
   // isClaiming: loading state while the NFT is minting 
-  const [isClaiming, setIsClaiming] = useState(false); 
+  const [isClaiming, setIsClaiming] = useState(false);
+  
+  // Holds the amount of token each member has in state 
+  const [memberTokenAmounts, setmemberTokenAmounts] = useState([]); 
+  
+  // The array holding all of our members addresses 
+  const [memberAddresses, setmemberAddresses] = useState([]); 
 
   useEffect(() => {
     // Exit if they don't have a connected wallet 
-    if (!address) {
+    if (!address) { 
       return; 
     }
 
