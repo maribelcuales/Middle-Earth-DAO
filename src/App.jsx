@@ -55,7 +55,7 @@ const App = () => {
     getAllAddresses();
   }, [hasClaimedNFT, editionDrop.history]);
 
-  // This useEffect grabs the number of token each member holds 
+  // This useEffect grabs the number of token each member holds
   useEffect(() => {
     if (!hasClaimedNFT) {
       return;
@@ -64,14 +64,31 @@ const App = () => {
     const getAllBalances = async () => {
       try {
         const amounts = await token.history.getAllHolderBalances();
-        setMemberTokenAmounts(amounts); 
+        setMemberTokenAmounts(amounts);
         console.log("👜 Amounts", amounts);
       } catch (error) {
-        console.error("Failed to get member balance", error); 
+        console.error("Failed to get member balance", error);
       }
-    }; 
+    };
     getAllBalances();
-  }, [hasClaimedNFT, token.history]); 
+  }, [hasClaimedNFT, token.history]);
+
+  // Can now combine the memberAddresses and memberTokenAmounts into a single array
+  const memberList = useMemo(() => {
+    return memberAddresses.map((address) => {
+      // Check if we are finding the address in the memberTokenAmounts array
+      // If yes, return the amount of token the user has
+      // Otherwise, return 0
+      const member = memberTokenAmounts?.find(
+        ({ holder }) => holder === address
+      );
+
+      return {
+        address,
+        tokenAmount: member?.balance.displayValue || "0",
+      };
+    });
+  }, [memberAddresses, memberTokenAmounts]);
 
   useEffect(() => {
     // Exit if they don't have a connected wallet
