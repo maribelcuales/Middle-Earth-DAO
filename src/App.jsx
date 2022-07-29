@@ -55,6 +55,24 @@ const App = () => {
     getAllAddresses();
   }, [hasClaimedNFT, editionDrop.history]);
 
+  // This useEffect grabs the number of token each member holds 
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return;
+    }
+
+    const getAllBalances = async () => {
+      try {
+        const amounts = await token.history.getAllHolderBalances();
+        setMemberTokenAmounts(amounts); 
+        console.log("👜 Amounts", amounts);
+      } catch (error) {
+        console.error("Failed to get member balance", error); 
+      }
+    }; 
+    getAllBalances();
+  }, [hasClaimedNFT, token.history]); 
+
   useEffect(() => {
     // Exit if they don't have a connected wallet
     if (!address) {
