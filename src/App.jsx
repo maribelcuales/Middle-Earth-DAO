@@ -10,6 +10,8 @@ const App = () => {
 
   // Initialize editionDrop contract 
   const editionDrop = useEditionDrop("0x72f0948daFC590f31f9c3F729EaaFA0147EB799e");
+  // Initiliaze our token contract 
+  const token = useToken("0x7c2c645734e89b6f10D429528D04cFB8c3bD27C5");
   // State variable for us to know if user has our NFT 
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
   // isClaiming: loading state while the NFT is minting 
@@ -37,7 +39,9 @@ const App = () => {
       }
     };
     checkBalance();
-  }, [address, editionDrop]);
+  }, [address, editionDrop])
+
+  
 
   const mintNft = async () => {
     try {
