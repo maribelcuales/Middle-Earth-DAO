@@ -23,6 +23,17 @@ const App = () => {
   // The array holding all of our members addresses 
   const [memberAddresses, setmemberAddresses] = useState([]); 
 
+  // A fancy function to shorten a wallet address, no need to show the whole thing 
+  const shortenAddress = (str) => {
+    return str.substring(0, 6) + "..." + str.substring(str.length - 4); 
+  }; 
+
+  // This useEffect grabs all the addresses of our members holding our NFT 
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return; 
+  }
+
   useEffect(() => {
     // Exit if they don't have a connected wallet 
     if (!address) { 
