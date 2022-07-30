@@ -145,7 +145,7 @@ const App = () => {
     );
   }
 
-  // Render DAO Member Page
+  // Render internal token-gated Member DAO dashboard 
   if (hasClaimedNFT) {
     return (
       <div className="member-page">
