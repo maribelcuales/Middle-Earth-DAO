@@ -30,6 +30,11 @@ import sdk from "./1-initialize-sdk.js";
       proposal_token_threshold: 0,
     }); 
 
-    
+    console.log(
+      "✅ Successfully deployed vote contract, address:", voteContractAddress,
+    );
+  } catch (error) {
+    console.error("Failed to deploy vote contract", error); 
   }
-})
+})();
+
