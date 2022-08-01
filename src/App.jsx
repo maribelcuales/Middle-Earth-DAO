@@ -37,6 +37,12 @@ const App = () => {
     return str.substring(0, 6) + "..." + str.substring(str.length - 4);
   };
 
+  // Give our app access to our vote
+  const [proposals, setProposals] = useState([]);
+  const [isVoting, setIsVoting] = useState(false); 
+  const [hasVoted, setHasVoted] = useState(false); 
+
+  
   // This useEffect grabs all the addresses of our members holding our NFT
   useEffect(() => {
     if (!hasClaimedNFT) {
