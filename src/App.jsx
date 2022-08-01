@@ -42,7 +42,25 @@ const App = () => {
   const [isVoting, setIsVoting] = useState(false); 
   const [hasVoted, setHasVoted] = useState(false); 
 
-  
+  // Retrieve all our existing proposals from the contract 
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return; 
+    }
+
+    // A simple call to vote.getAll() to grab the proposals 
+    const getAllProposals = async () => {
+      try {
+        const proposals = await vote.getAll();
+        setProposals(proposals); 
+        console.log("🌈 Proposals: ", proposals);
+      } catch (error) {
+        console.log("Failed to get proposals", error);
+      }
+    };
+    getAllProposals(); 
+  }, [hasClaimedNFT, vote]);
+ 
   // This useEffect grabs all the addresses of our members holding our NFT
   useEffect(() => {
     if (!hasClaimedNFT) {
