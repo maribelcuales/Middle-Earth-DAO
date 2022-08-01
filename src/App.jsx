@@ -3,6 +3,7 @@ import {
   useMetamask,
   useEditionDrop,
   useToken,
+  useVote,
 } from "@thirdweb-dev/react";
 import { useState, useEffect, useMemo } from "react";
 import "./styles.css";
@@ -19,6 +20,7 @@ const App = () => {
   );
   // Initiliaze our token contract
   const token = useToken("0x7c2c645734e89b6f10D429528D04cFB8c3bD27C5");
+  const vote = useVote("0x3EA883F93Abc6346faE2cB4a3ec94fCDe5Af14C4");
   // State variable for us to know if user has our NFT
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
   // isClaiming: loading state while the NFT is minting
@@ -145,7 +147,7 @@ const App = () => {
     );
   }
 
-  // Render internal token-gated Member DAO dashboard 
+  // Render internal token-gated Member DAO dashboard
   if (hasClaimedNFT) {
     return (
       <div className="member-page">
@@ -153,7 +155,7 @@ const App = () => {
         <p>Congratulations on being a Member!</p>
         <div>
           <div>
-            <h2>Member List</h2> 
+            <h2>Member List</h2>
             <table className="card">
               <thead>
                 <tr>
@@ -176,7 +178,7 @@ const App = () => {
         </div>
       </div>
     );
-  };
+  }
 
   // Render mint NFT screen
   return (
