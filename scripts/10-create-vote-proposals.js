@@ -35,11 +35,39 @@ const token = sdk.getToken("0x7c2c645734e89b6f10D429528D04cFB8c3bD27C5");
 
     await vote.propose(description, executions); 
 
+    console.log("✅ Successfully created proposal to mint tokens");
+  } catch (error) {
+    console.error("Failed to create first proposal", error);
+    process.exit(1);
+  }
+
+  try {
+    // Create proposal to transfer ourselves 6,900 tokens for being awesome 
+    const amount = 6_900;
+    const description = "Should the DAO transfer " + amount + " tokens from the treasury to " + process.env.WALLET_ADDRESS + " for being awesome?";
+    const executions = [
+      {
+        // Again, we're sending ourselves 0 ETH. Just sending our own token 
+        nativeTokenValue: 0,
+        transactionData: token.encoder.encode(
+          // We're doing a transfer from the treasury to our wallet 
+          "transfer",
+          [
+            process.env.WALLET_ADDRESS, 
+            ethers.utils.parseUnits(amount.toString(), 18),
+          ]
+        ),
+        toAddress: token.getAddress(),
+      },
+    ];
+
+    await vote.propose(description, executions); 
+
     console.log(
       "✅ Successfully created proposal to reward ourselves from the treasury, let's hope people vote for it!"
     );
   } catch (error) {
     console.error("Failed to create second proposal", error); 
-  }
+  }  
 })(); 
 
