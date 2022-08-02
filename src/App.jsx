@@ -5,6 +5,7 @@ import {
   useToken,
   useVote,
 } from "@thirdweb-dev/react";
+import { AddressZero } from "@ethersproject/constants"; 
 import { useState, useEffect, useMemo } from "react";
 import "./styles.css";
 
