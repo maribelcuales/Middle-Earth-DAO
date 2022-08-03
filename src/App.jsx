@@ -247,12 +247,18 @@ const App = () => {
                     // abstain by default 
                     vote: 2,
                   };
+                  proposal.vote.forEach((vote) => {
+                    const elem = document.getElementById(
+                      proposal.proposalId + "-" + vote.type
+                    );
 
-                })
-
-
-
-
+                    if (elem.checked) {
+                      voteResult.vote = vote.type;
+                      return;
+                    }
+                  });
+                  return voteResult;
+                });
 
               }}
             >
