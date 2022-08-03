@@ -200,7 +200,9 @@ const App = () => {
     );
   }
 
-  // Render internal token-gated Member DAO dashboard
+  // Dsiplay internal token-gated Member DAO dashboard
+  // Only for members that already have claimed their NFT
+  // Render all members + their token amounts  
   if (hasClaimedNFT) {
     return (
       <div className="member-page">
@@ -227,6 +229,17 @@ const App = () => {
                 })}
               </tbody>
             </table>
+          </div>
+          <div>
+            <h2>Active Proposals</h2>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
+
+            </form>
           </div>
         </div>
       </div>
