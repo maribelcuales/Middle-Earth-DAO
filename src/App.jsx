@@ -236,6 +236,24 @@ const App = () => {
               onSubmit={async (e) => {
                 e.preventDefault();
                 e.stopPropagation();
+
+                // Before doing async things, disable the button to prevent double clicks 
+                setIsVoting(true); 
+
+                // Get the votes from the form for the values
+                const votes = proposals.map((proposal) => {
+                  const voteResult = {
+                    proposalId: proposals.proposalId,
+                    // abstain by default 
+                    vote: 2,
+                  };
+
+                })
+
+
+
+
+
               }}
             >
 
