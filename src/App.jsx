@@ -272,13 +272,20 @@ const App = () => {
                   
                   // Then we need to vote on the proposals 
                   try {
-                    await Promise.all(
-                      votes.map(async({ proposalId, vote: _vote }) => {
+                    await Promise.all(posalId, vote: _vote }) => {
                         // before voting we first need to check whether the proposal is open for voting 
                         // we first need to get the latest state of the proposal 
-                        
+                        const proposal = await vote.get(proposalId); 
+                        // then we check if the proposal is open for voting (state === 1 means it is open)
+                        if (proposal.state === 1) {
+                          // If it is open for voting, we'll vote on it
+                          return vote.vote(proposalId, _vote); 
+                        }
+                        // If the proposal is not open for voting, we just return nothing. Letting us continue 
+                          return; 
                       })
-                    )
+                    );
+                    
                   }
                   
                 }  
