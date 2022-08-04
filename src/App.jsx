@@ -260,6 +260,29 @@ const App = () => {
                   return voteResult;
                 });
 
+                // first we need to make sure the user delegates their token to vote 
+                try {
+                  // We'll check if the wallet still needs to delegate their tokens before they can vote 
+                  const delegation = await token.getDelegationOf(address); 
+                  // If the delegation is the 0x0 address that means they have not delegated their governance tokens yet 
+                  if (delegation === AddressZero) {
+                    // If they haven't delegated their tokens yet, we'll have them delegate them before voting 
+                    await token.delegateTo(address); 
+                  }
+                  
+                  // Then we need to vote on the proposals 
+                  try {
+                    await Promise.all(
+                      votes.map(async({ proposalId, vote: _vote }) => {
+                        // before voting we first need to check whether the proposal is open for voting 
+                        // we first need to get the latest state of the proposal 
+                        
+                      })
+                    )
+                  }
+                  
+                }  
+
               }}
             >
 
