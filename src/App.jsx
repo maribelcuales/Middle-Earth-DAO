@@ -299,14 +299,22 @@ const App = () => {
                           }
                         })
                       ); 
-                      
+                      // If we get here that means we successfully voted, so let's set the "hasVoted" state to true 
+                      setHasVoted(true);
+                      // And log out a success message 
+                      console.log("Successfully voted!");
+                    } catch (error) {
+                      console.error("Failed to execute votes", error);
                     } 
-
-                    
+                  } catch (error) {
+                    console.error("Failed to vote", error); 
                   }
-                  
-                }  
-
+                } catch (error) {
+                  console.error("Failed to delegate tokens", error);
+                } finally {
+                  // In *either* case we need to set the isVoting state to false to enable the button again 
+                  setIsVoting(false); 
+                }
               }}
             >
 
