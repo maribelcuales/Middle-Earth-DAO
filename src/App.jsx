@@ -317,6 +317,28 @@ const App = () => {
                 }
               }}
             >
+              {proposals.map((proposal) => (
+                <div key={proposal.proposalId} className="card">
+                  <h5>{proposal.description}</h5>
+                  <div>
+                    {proposal.votes.map(({ type, label }) => (
+                      <div key={type}>
+                        <input 
+                          type="radio"
+                          id={proposal.proposalId + "-" + type}
+                          name={proposal.proposalId}
+                          value={type}
+                          // Default the "abstain" vote to checked 
+                          defaultChecked={type === 2}
+                        />
+                        <label htmlFor={proposal.proposalId + "-" + type}>
+                          {label}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
 
             </form>
           </div>
