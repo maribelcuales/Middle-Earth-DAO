@@ -285,6 +285,23 @@ const App = () => {
                           return; 
                       })
                     );
+                    try {
+                      // If any of the proposals are ready to be executed, we'll need to execute them 
+                      // A proposal is ready to be executed if it is in state 4 
+                      await Promise.all(
+                        votes.map(async ({ proposalId }) => {
+                          // We'll first get the latest state of the proposal again, since we may have just voted before  
+                          const proposal = await vote.get(proposalId);
+                          
+                          // If the state is in state 4 (meaning that it is ready to be executed), we'll execute the proposal 
+                          if (proposal.state === 4) {
+                            return vote.execute(proposalId);
+                          }
+                        })
+                      ); 
+                      
+                    } 
+
                     
                   }
                   
