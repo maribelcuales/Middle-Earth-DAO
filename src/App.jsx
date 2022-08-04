@@ -200,7 +200,7 @@ const App = () => {
     );
   }
 
-  // Dsiplay internal token-gated Member DAO dashboard
+  // Display internal token-gated Member DAO dashboard
   // Only for members that already have claimed their NFT
   // Render all members + their token amounts  
   if (hasClaimedNFT) {
@@ -243,7 +243,7 @@ const App = () => {
                 // Get the votes from the form for the values
                 const votes = proposals.map((proposal) => {
                   const voteResult = {
-                    proposalId: proposals.proposalId,
+                    proposalId: proposal.proposalId,
                     // abstain by default 
                     vote: 2,
                   };
@@ -272,7 +272,8 @@ const App = () => {
                   
                   // Then we need to vote on the proposals 
                   try {
-                    await Promise.all(posalId, vote: _vote }) => {
+                    await Promise.all(
+                      votes.map(async ({proposalId, vote: _vote }) => {
                         // before voting we first need to check whether the proposal is open for voting 
                         // we first need to get the latest state of the proposal 
                         const proposal = await vote.get(proposalId); 
@@ -340,6 +341,18 @@ const App = () => {
                 </div>
               ))}
 
+              <button disabled={isVoting || hasVoted} type="submit">
+                {isVoting
+                  ? "Voting..."
+                  : hasVoted
+                    ? "You already voted."
+                    : "Submit Votes!"}
+              </button>
+              {!hasVoted && (
+                <small>
+                  This will trigger multiple transactions that you will need to sign.
+                </small>
+              )}
             </form>
           </div>
         </div>
