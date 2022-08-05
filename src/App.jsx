@@ -14,6 +14,7 @@ import "./styles.css";
 const App = () => {
   // Using the hooks from thirdweb
   const address = useAddress();
+  const network = useNetwork(); 
   const connectWithMetamask = useMetamask();
   console.log("👋 Address:", address);
 
@@ -188,6 +189,19 @@ const App = () => {
       setIsClaiming(false);
     }
   };
+
+  // Checking if we're finding a chain on our preferred network 
+  // If not, prompt users to switch network 
+  if (address && (network?.[0].data.chain.id !== ChainId.Rinkeby)) {
+    return (
+      <div className="unsupported-network">
+        <h2>Please connect to Rinkeby</h2>
+        <p>
+          This dapp only works on the Rinkeby network, please switch networks in your connected wallet. 
+        </p>
+      </div>
+    );
+  }
 
   // Case if user has not connected their wallet
   // Let them call connectWallet
