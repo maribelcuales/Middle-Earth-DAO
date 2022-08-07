@@ -15,6 +15,7 @@
 
 .mint-button {
   background-color: palevioletred;
+  width: 50%;
   align-items: center;  
 }
 
@@ -28,7 +29,17 @@
 }
 
 .vote-button:hover {
-  background-color: palegreen;
+  background-color: pink;
   color: yellowgreen;
+}
+
+.member-page h1 {
+  color: yellow;
+}
+
+.member-page p {
+  color: plum;
+  font-size: larger;
+  font-weight: bold;
 }
 
