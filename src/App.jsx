@@ -382,7 +382,7 @@ const App = () => {
   return (
     <div className="mint-nft">
       <h1>Mint your Free 💎DAO Membership NFT</h1>
-      <button disabled={isClaiming} onClick={mintNft}>
+      <button disabled={isClaiming} onClick={mintNft} className="mint-button">
         {isClaiming ? "Minting..." : "Mint your NFT (FREE)"}
       </button>
     </div>
