@@ -18,8 +18,17 @@
   align-items: center;  
 }
 
-.mint-button {
+.mint-button:hover {
   background-color: yellowgreen;
   color: white; 
+}
+
+.vote-button {
+  background-color: palevioletred;  
+}
+
+.vote-button:hover {
+  background-color: palegreen;
+  color: yellowgreen;
 }
 
