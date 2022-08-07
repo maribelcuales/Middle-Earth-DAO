@@ -209,9 +209,11 @@ const App = () => {
     return (
       <div className="landing">
         <h1 className="welcomeHeader">Welcome to MiddleEarthDAO 🧙‍♂️</h1>
-        <button onClick={connectWithMetamask} className="btn-hero">
-          Connect your Wallet
-        </button>
+        <div>
+          <button onClick={connectWithMetamask} className="btn-hero">
+            Connect your Wallet
+          </button>
+        </div>
       </div>
     );
   }
@@ -357,7 +359,7 @@ const App = () => {
                 </div>
               ))}
 
-              <button disabled={isVoting || hasVoted} type="submit">
+              <button disabled={isVoting || hasVoted} type="submit" className="vote-button"> 
                 {isVoting
                   ? "Voting..."
                   : hasVoted

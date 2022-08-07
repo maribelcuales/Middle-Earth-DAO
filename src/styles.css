@@ -1,3 +1,15 @@
 .welcomeHeader {
   color: yellow;
 }
+
+.btn-hero {
+  background-color: palevioletred;
+  width: 50%;
+  align-items: center;  
+}
+
+.btn-hero:hover {
+  background-color: yellowgreen;
+  color: white; 
+}
+
