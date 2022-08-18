@@ -9,6 +9,7 @@ body {
   color: #fff;
   overflow-x: hidden;
 }
+
 #root {
   min-height: 100vh;
   display: flex;
@@ -57,6 +58,15 @@ h1 {
   display: flex;
   text-align: center;
 }
+
+/*
+.landing {
+  width:auto;
+  height:auto;
+  background-image: url("../scripts/assets/landing-page-background.png");
+  background-repeat: no-repeat;
+}
+*/
 
 .member-page > div {
   display: flex;
